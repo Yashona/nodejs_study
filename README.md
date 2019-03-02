@@ -70,8 +70,8 @@ nodejs 基础的练习
 	//设置路由，并渲染静态页面
 	router.get('/index',function(req,res){
 		Student.find(function(err,data){
-			var students = data.students
-			res.render('./index.html',{students:students})
+			if(err) return res.status(500).send('Server Error')
+			res.render('./index.html',{students:data.students})
 		})
 	})
 	
